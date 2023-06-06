@@ -18,39 +18,42 @@ import br.com.busca.enderecov2.response.ResponseFinal;
 @ExtendWith(SpringExtension.class)
 @WebAppConfiguration
 public class EnderecoServiceTest {
-	
+
 	@Autowired
 	private EnderecoService enderecoService = new EnderecoService();
-	
+
 	@Test
 	public void TestEnderecoService_BuscaCepComSucesso() {
-		
+
 		EnderecoRequest request = EnderecoRequest.builder().cep("01001000").build();
-		
+
 		ResponseFinal response = enderecoService.executa(request);
 
-		ResponseFinal responseFinal = ResponseFinal.builder().cep("01001-000").rua("Praça da Sé").complemento("lado ímpar").bairro("Sé").cidade("São Paulo").estado("SP").frete(7.85).build();
-		
+		ResponseFinal responseFinal = ResponseFinal.builder().cep("01001-000").rua("Praça da Sé")
+				.complemento("lado ímpar").bairro("Sé").cidade("São Paulo").estado("SP").frete(7.85).build();
+
 		assertTrue(response.equals(responseFinal));
-		
+
 	}
+
 	@Test
 	public void TestEnderecoService_FalhaAoBuscarCep() {
-		
+
 		EnderecoRequest request = EnderecoRequest.builder().cep("00000000").build();
-		
-		assertThrows(NullPointerException.class, () ->  enderecoService.executa(request));
-		
+
+		assertThrows(NullPointerException.class, () -> enderecoService.executa(request));
+
 	}
+
 	@Test
 	public void TestEnderecoService_FalhaAoPassarCepInvalido() {
-		
+
 		EnderecoRequest request = EnderecoRequest.builder().cep("").build();
 		EnderecoRequest request2 = EnderecoRequest.builder().cep(null).build();
-		
-		assertThrows(ErroResponseViaCep.class, () ->  enderecoService.executa(request));
-		assertThrows(ErroResponseViaCep.class, () ->  enderecoService.executa(request2));
-		
+
+		assertThrows(ErroResponseViaCep.class, () -> enderecoService.executa(request));
+		assertThrows(ErroResponseViaCep.class, () -> enderecoService.executa(request2));
+
 	}
 
 }

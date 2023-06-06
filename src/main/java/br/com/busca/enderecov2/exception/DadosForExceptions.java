@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class DadosForExceptions {
-	
+
 	private String message;
 	private HttpStatus status;
 

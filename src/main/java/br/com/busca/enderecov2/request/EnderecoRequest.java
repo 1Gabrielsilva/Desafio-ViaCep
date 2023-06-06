@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EnderecoRequest {
-	
+
 	@Nullable
 	@ApiModelProperty(value = "Cep informado pelo usuario")
 	private String cep;

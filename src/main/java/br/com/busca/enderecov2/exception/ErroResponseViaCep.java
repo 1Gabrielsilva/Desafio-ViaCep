@@ -7,5 +7,5 @@ public class ErroResponseViaCep extends RuntimeException {
 	public ErroResponseViaCep(String message) {
 		super(message);
 	}
-	
+
 }

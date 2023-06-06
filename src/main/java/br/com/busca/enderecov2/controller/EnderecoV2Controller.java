@@ -19,13 +19,13 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Api(value = "Api para buscar CEP e calcular o valor do frete pela região")
 public class EnderecoV2Controller {
-	
+
 	private final EnderecoService enderecoService;
 
 	@PostMapping("/consulta-endereco")
 	@ApiOperation(value = "Faz a busca das informações pelo CEP")
-	public ResponseEntity<ResponseFinal> buscaCep(@RequestBody @Valid  EnderecoRequest request) {
+	public ResponseEntity<ResponseFinal> buscaCep(@RequestBody @Valid EnderecoRequest request) {
 		return ResponseEntity.ok(enderecoService.executa(request));
 	}
-		
+
 }
